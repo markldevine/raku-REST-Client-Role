@@ -6,6 +6,7 @@ use KHPH;
 has Cro::HTTP::Client   $.cro-client;
 has Str:D               $.url           is required;
 has Str:D               $.user-id       is required;
+has Str                 $.stash-path;
 has Str                 $.passwd;
 has Bool                $.insecure                  = False;
 
@@ -13,7 +14,9 @@ has                     $.response;
 has                     $.body;
 
 submethod TWEAK {
-    $!passwd        = KHPH.new(:prompt($!user-id ~ ' password'), :stash-path($*HOME ~ '/.' ~ $*PROGRAM-NAME.IO.basename ~ '/accounts/' ~ $!user-id ~ '.khph')).expose;
+    my $stash-path  = $*HOME ~ '/.' ~ $*PROGRAM-NAME.IO.basename ~ '/accounts/' ~ $!user-id ~ '.khph';
+    $stash-path     = $!stash-path if $!stash-path;
+    $!passwd        = KHPH.new(:prompt($!user-id ~ ' password'), :$stash-path).expose;
     $!cro-client    = Cro::HTTP::Client.new;
 }
 
