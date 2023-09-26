@@ -24,8 +24,6 @@ method get {
                         :auth({username => self.user-id, password => self.passwd}),
                         :ca({:insecure}),
                       ;
-#   my $body        = await $response.body;
-#   return $body;
     return await $response.body;
 }
 
