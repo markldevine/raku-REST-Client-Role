@@ -1,12 +1,10 @@
-ISP Server Reporter Role
-===============================
-This role provides an interface to common to IBM Spectrum Protect
-server reporting on terminals.
+REST API Client Role
+====================
+This role provides an interface to common REST API client behaviors.
 
 SYNOPSIS
 ========
-  use ISP::Server::Reporter;
-  class Reporter does ISP::Server::Reporter;
+  use REST::Client;
 
 AUTHOR
 ======

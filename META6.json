@@ -3,19 +3,18 @@
   "authors": [ "Mark Devine <mark@markdevine.com>" ],
   "depends": [
   ],
-  "description": "ISP Server Reporter Role",
+  "description": "REST Client Role",
   "license": "Artistic-2.0",
   "meta-version": 0,
-  "name": "ISP::Server::Reporter",
+  "name": "REST::Client",
   "perl": "6.*",
   "provides": {
-    "ISP::Server::Reporter": "lib/ISP/Server/Reporter.rakumod",
-    "ISP::Server::Reporter::Field": "lib/ISP/Server/Reporter/Field.rakumod"
+    "REST::Client": "lib/REST/Client.rakumod"
   },
   "resources": [],
-  "source-url": "https://github.com/markldevine/ISP-Server-Reporter.git",
+  "source-url": "https://github.com/markldevine/raku-REST-Client-Role.git",
   "tags": [
-    "ISP"
+    "REST"
   ],
   "version": "0.0.1"
 }
