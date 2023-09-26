@@ -3,11 +3,7 @@
 use lib '/home/mdevine/github.com/raku-REST-Client-Role/lib';
 use REST::Client;
 
-use Data::Dump::Tree;
-
-class Rest-Client does REST::Client {
-    ;
-}
+class Rest-Client does REST::Client;
 
 sub MAIN (
     Str:D   :$url!,                                 #= full URL string
