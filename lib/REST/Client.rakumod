@@ -23,7 +23,8 @@ method get {
                       );
     %options<ca>    = { :insecure } if self.insecure;
     $!response      = await $!cro-client.get(self.url, %options);
-    return await $!response.body;
+    $!body          = await $!response.body;
+    return $!body;
 }
 
 =finish
