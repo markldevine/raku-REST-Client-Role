@@ -1,0 +1,43 @@
+#!/usr/bin/env raku
+
+use Data::Dump::Tree;
+
+use Cro::HTTP::Client;
+
+my $login-url           = 'https://10.200.51.67/aml/users/login';
+
+my %options;
+my %auth                = username => 'automon', password => 'jgb6005th', if-asked => True;
+
+my $cro-client          = Cro::HTTP::Client.new:
+                            auth            => {
+                                                username => 'automon',
+                                                password => 'jgb6005th',
+                                                if-asked => True,
+                                               },
+                            ca              => {
+                                                :insecure,
+                                               },
+                            content-type    => 'application/json',
+                            user-agent      => 'Cro',
+                          ;
+
+my $response            = await $cro-client.post($login-url);
+ddt .response;
+
+my $body                = await $response.body;
+
+CATCH {
+    when X::Cro::HTTP::Error {
+        if .response.status == 402 {
+            die '402: log in again';
+        }
+        else {
+            die "Unexpected error: $_";
+        }
+    }
+}
+
+ddt $body;
+
+=finish
